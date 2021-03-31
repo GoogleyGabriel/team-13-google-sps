@@ -58,26 +58,24 @@ public class JsonMaker {
 
   public static void main(String[] args) {
     try {
-      // getting user input for path
-      Scanner in = new Scanner(System.in);
-      // my setup's path, for example (Sam)
-      // "/home/sam/googlesps/team-13-google-sps/project/chrome-extension/test.json"
-      System.out.print("Please type the desired path to save the json file > ");
-      String jsonFileName = in.nextLine();
-      in.close();
+      String jsonFileName = "project/chrome-extension/words.json";
       // construct json file
       Gson gson = new Gson();
-      HashMap<String, Word> wordMap = new HashMap<>();
+      File word = new File("project/json-maker/word-info/words.txt");
+      File fact = new File("project/json-maker/word-info/facts.txt");
+      File image = new File("project/json-maker/word-info/image-src.txt");
+      File urls = new File("project/json-maker/word-info/urls.txt");
+      HashMap<String, Word> wordMap = wordMap(word, fact, image, urls);
 
       // TODO (Instead of doing simple tests read from text files, but this was
       // a useful proof of concept; Should be done by 03/30/21)
-      Word covid = new Word("test1", "test2", new String[] { "test3", "test4" });
-      wordMap.put("covid", covid);
-      System.out.println(gson.toJson(wordMap));
+      // Word covid = new Word("test1", "test2", new String[] { "test3", "test4" });
+      // wordMap.put("covid", covid);
+      // System.out.println(gson.toJson(wordMap));
 
       // write to json file
-      File words = new File(jsonFileName);
-      FileWriter fwriter = new FileWriter(words);
+      File wordsInJson = new File(jsonFileName);
+      FileWriter fwriter = new FileWriter(wordsInJson);
       gson.toJson(wordMap, fwriter);
       fwriter.close();
     } catch (FileNotFoundException f) {
