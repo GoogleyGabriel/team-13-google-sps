@@ -1,0 +1,7 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "project/json-maker/lib/gson-2.8.6.jar"
+  ],
+  "java.format.comments.enabled": false
+}
