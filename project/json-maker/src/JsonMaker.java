@@ -39,6 +39,23 @@ import java.util.Scanner;
 
 public class JsonMaker {
 
+  /** [wordMap] is the HashMap (k1-> v1, k2-> v2, ..., kn-> vn) such that
+   * ki is a fact word from [word] that will map to vi that is a Word 
+   * containing facts, image source paths, and urls of fact sources from [fact],
+   * [image], and [urls] for 1 <= i <= n, respectively. Each file should be 
+   * delimited by empty newlines and ordered according to the listing of words 
+   * in [word]. Requires that all words in [word] have at least one of 
+   * everything: fact, image source, and url.
+   * 
+   * @param word : The file containining words to map
+   * @param fact : The file containing facts for every word in [word]
+   * @param image : The file containing image paths for every word in [word]
+   * @param urls : The file containing all URLs for every word in [word]
+   */
+  public static HashMap<String, Word> wordMap(File word, File fact, File image, File urls) {
+    return null;
+  }
+
   public static void main(String[] args) {
     try {
       // getting user input for path
