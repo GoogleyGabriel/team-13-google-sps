@@ -1,0 +1,26 @@
+/**Sets pop-up winodw to max size in chrome extensions.*/
+body {
+    max-height: 600px;
+    min-height: 90vh;
+    max-width: 800px;
+    min-width: 70vh;
+    background-color: thistle; 
+  }
+  
+  /**The topics to be choosen are styled in a column.*/
+  .infoCheck-topics{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /**Gives the buttons the same size.*/
+  button{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   width: 100px;
+  }
+  
+  h1{
+    text-align: center;
+  }
