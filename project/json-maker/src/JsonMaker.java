@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class JsonMaker {
@@ -62,10 +63,13 @@ public class JsonMaker {
       FileWriter fwriter = new FileWriter(words);
       gson.toJson(wordMap, fwriter);
       fwriter.close();
+    } catch (FileNotFoundException f) {
+      System.out.println("We could not find the path, please try again.");
     } catch (IOException e) {
       System.out.println("Uh oh, something went wrong.");
       e.printStackTrace();
     }
+
   }
 
   private static class Word {
