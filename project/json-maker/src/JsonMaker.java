@@ -113,9 +113,9 @@ public class JsonMaker {
       gson.toJson(wordMap, fwriter);
       fwriter.close();
     } catch (FileNotFoundException f) {
-      System.out.println("We could not find the path, please try again.");
+      System.out.println("We could not find the file path, please try again.");
     } catch (IOException e) {
-      System.out.println("Uh oh, something went wrong.");
+      System.out.println("Uh oh, something went wrong while writing to the file words.json.");
       e.printStackTrace();
     }
 
