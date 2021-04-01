@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "InfoCheck",
+    "version": "2.0",
+    "description": "Chrome extension that provides legitimate info on popular topics to prevent misinformation",
+    "icons": {
+        "128": "InfoCheck128.png",
+        "48": "InfoCheck48.png"
+    },
+    "browser_action": {
+        "default_icon": "InfoCheck48.png",
+        "default_popup": "popup.html"
+    }
+}
