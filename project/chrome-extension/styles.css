@@ -1,26 +1,37 @@
 /**Sets pop-up winodw to max size in chrome extensions.*/
 body {
-    max-height: 600px;
-    min-height: 90vh;
-    max-width: 800px;
-    min-width: 70vh;
-    background-color: thistle; 
-  }
-  
-  /**The topics to be choosen are styled in a column.*/
-  .infoCheck-topics{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  /**Gives the buttons the same size.*/
-  button{
-   margin-top: 10px;
-   margin-bottom: 10px;
-   width: 100px;
-  }
-  
-  h1{
-    text-align: center;
-  }
+  min-height: 600px;
+  min-width: 400px;
+  font-family: "Segoe UI", Tahoma;
+}
+
+h1 {
+  font-size: larger;
+  text-align: center;
+  text-decoration: none;
+}
+
+button {
+  padding: 5px;
+  margin: 20px;
+  align-content: center;
+}
+
+#mainPicture {
+  height: 200px;
+  width: 400px;
+  text-align: center;
+}
+#mainMenu,
+#mainInfo {
+  margin: 10px;
+}
+
+.infoCheck-topics {
+  margin-left: 10px;
+}
+/** */
+
+#wordFound {
+  text-align: center;
+}
