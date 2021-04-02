@@ -5,6 +5,8 @@ window.onload = showInfo;
 async function showInfo(){
 
   wordFoundAndIntro();
+  createDescription();
+  addSources();
 
 }
 
