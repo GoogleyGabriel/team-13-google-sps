@@ -25,3 +25,10 @@ function createDescription(){
   const description = document.getElementbyId("description");
   // TODO(@SamRod33 or @SofiaPSU): Add to the description by using description.innerText
 }
+
+// Add sources, such as link or references, to the information used for the
+// description of the word.
+function addSources(){
+  const source = document.getElementById("sources");
+  // TODO(@SamRod33 or @SofiaPSU): Add to the sources by using source.innerText
+}
