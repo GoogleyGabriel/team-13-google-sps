@@ -19,3 +19,9 @@ function wordFoundAndIntro(){
     //Adds the word of the id to the wordTitle element
    intro.innerText = "See the latest information about " + localStorage.getItem("rdoIdVarKey");
 }
+
+// Add information aboout word to info.html
+function createDescription(){
+  const description = document.getElementbyId("description");
+  // TODO(@SamRod33 or @SofiaPSU): Add to the description by using description.innerText
+}
