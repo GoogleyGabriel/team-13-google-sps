@@ -7,7 +7,6 @@ async function showInfo(){
   wordFoundAndIntro();
   createDescription();
   addSources();
-
 }
 
 //Shows the word that was checked and a brief intro.
