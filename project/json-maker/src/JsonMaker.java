@@ -27,33 +27,74 @@
 *
 *
 * @author : Samuel Rodriguez (samuelrprofessional@gmail.com)
-* Date : 03/30/2021
+* Date : 04/01/2021
 */
-import com.google.gson.*;
+import com.google.gson.Gson;
 import java.util.HashMap;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class JsonMaker {
 
   /** [wordMap] is the HashMap (k1-> v1, k2-> v2, ..., kn-> vn) such that
-   * ki is a fact word from [word] that will map to vi that is a Word 
-   * containing facts, image source paths, and urls of fact sources from [fact],
-   * [image], and [urls] for 1 <= i <= n, respectively. Each file should be 
+   * ki is a fact word from [wordF] that will map to vi that is a [Word] 
+   * containing facts, image source paths, and urls of fact sources from [factF],
+   * [imageF], and [urlsF] for 1 <= i <= n, respectively. Each file should be 
    * delimited by empty newlines and ordered according to the listing of words 
-   * in [word]. Requires that all words in [word] have at least one of 
+   * in [wordF]. Requires that all words in [wordF] have at least one of 
    * everything: fact, image source, and url.
    * 
-   * @param word : The file containining words to map
-   * @param fact : The file containing facts for every word in [word]
-   * @param image : The file containing image paths for every word in [word]
-   * @param urls : The file containing all URLs for every word in [word]
+   * @param wordF : The file containining words to map
+   * @param factF : The file containing facts for every word in [wordF]
+   * @param imageF : The file containing image paths for every word in [wordF]
+   * @param urlsF : The file containing all URLs for every word in [wordF]
    */
-  public static HashMap<String, Word> wordMap(File word, File fact, File image, File urls) {
-    return null;
+  public static HashMap<String, Word> wordMap(File wordF, File factF, File imageF, File urlsF) {
+    try {
+      Scanner word_rd = new Scanner(wordF);
+      HashMap<String, Word> wordMap = new HashMap<>();
+      // organizes which scanner sets what field in [Word]
+      HashMap<String, Scanner> scanInfo = new HashMap<>();
+      scanInfo.put("description", new Scanner(factF));
+      scanInfo.put("image", new Scanner(imageF));
+      scanInfo.put("url", new Scanner(urlsF));
+      String word = "";
+      Word aWord = new Word();
+      boolean hasNextInfo = true;
+      StringBuilder val = new StringBuilder();
+      String nextline = "";
+      while (word_rd.hasNextLine()) {
+        word = word_rd.nextLine();
+        for (String info : scanInfo.keySet()) {
+          while (scanInfo.get(info).hasNextLine() && hasNextInfo) {
+            nextline = scanInfo.get(info).nextLine();
+            val.append(nextline);
+            if (nextline.equals(""))
+              hasNextInfo = false;
+            else if (info.equals("url"))
+              aWord.addUrl(nextline);
+            else
+              aWord.setInfo(info, val.toString());
+          }
+          hasNextInfo = true;
+          val = new StringBuilder();
+        }
+
+        wordMap.put(word, aWord);
+        aWord = new Word();
+      }
+      word_rd.close();
+      return wordMap;
+
+    } catch (Exception e) {
+      System.out.println("Error occurred while trying to read files");
+      e.printStackTrace();
+      return null;
+    }
   }
 
   public static void main(String[] args) {
@@ -66,22 +107,15 @@ public class JsonMaker {
       File image = new File("project/json-maker/word-info/image-src.txt");
       File urls = new File("project/json-maker/word-info/urls.txt");
       HashMap<String, Word> wordMap = wordMap(word, fact, image, urls);
-
-      // TODO (Instead of doing simple tests read from text files, but this was
-      // a useful proof of concept; Should be done by 03/30/21)
-      // Word covid = new Word("test1", "test2", new String[] { "test3", "test4" });
-      // wordMap.put("covid", covid);
-      // System.out.println(gson.toJson(wordMap));
-
       // write to json file
       File wordsInJson = new File(jsonFileName);
       FileWriter fwriter = new FileWriter(wordsInJson);
       gson.toJson(wordMap, fwriter);
       fwriter.close();
     } catch (FileNotFoundException f) {
-      System.out.println("We could not find the path, please try again.");
+      System.out.println("We could not find the file path, please try again.");
     } catch (IOException e) {
-      System.out.println("Uh oh, something went wrong.");
+      System.out.println("Uh oh, something went wrong while writing to the file words.json.");
       e.printStackTrace();
     }
 
@@ -102,12 +136,24 @@ public class JsonMaker {
     private String image;
 
     /** [URL] is the list of URLs that fact descriptions are gathered. */
-    private String[] URL;
+    private ArrayList<String> URL = new ArrayList<>();
 
-    public Word(String description, String image, String[] URL) {
-      this.description = description;
-      this.image = image;
-      this.URL = URL;
+    public Word() {
+    }
+
+    /** [setInfo info] assigns the value [val] to field [info]. */
+    public void setInfo(String info, String val) {
+      if (info.equals("description"))
+        description = val;
+      else if (info.equals("image"))
+        image = val;
+      else if (info.equals("url"))
+        addUrl(val);
+    }
+
+    /** [addUrl url] appends the value [url] to [URL]  */
+    public void addUrl(String url) {
+      URL.add(url);
     }
 
   }
