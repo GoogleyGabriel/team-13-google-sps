@@ -1,0 +1,3 @@
+chrome-extension/images/covid.png
+
+chrome-extension/images/climate-change.png

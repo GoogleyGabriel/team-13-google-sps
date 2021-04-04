@@ -1,0 +1,37 @@
+/**Sets pop-up winodw to max size in chrome extensions.*/
+body {
+  min-height: 600px;
+  min-width: 400px;
+  font-family: "Segoe UI", Tahoma;
+}
+
+h1 {
+  font-size: larger;
+  text-align: center;
+  text-decoration: none;
+}
+
+button {
+  padding: 5px;
+  margin: 20px;
+  align-content: center;
+}
+
+#mainPicture {
+  height: 200px;
+  width: 400px;
+  text-align: center;
+}
+#mainMenu,
+#mainInfo {
+  margin: 10px;
+}
+
+.infoCheck-topics {
+  margin-left: 10px;
+}
+/** */
+
+#wordFound {
+  text-align: center;
+}
