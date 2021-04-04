@@ -12,21 +12,25 @@
   <body> 
  <!--Putting all of the main info content on a div so it can be styled later.-->
  <div id="mainInfo">
-    <a href="popup.html"><h1>InfoCheck</h1></a>
+    <a href="popup.html" id="infoPage"><h1>←</h1></a>
     
     <!--Here we would display the word we are viewing information for.-->
     <h4 class="word-found" id="wordFound"> </h4>
-    
+
+    <p class="image-added" id ="imageAdded"></p>
+
     <!--Here we would have some sort of title or short sentence that serves as an introduction to our word and its description.-->
     <p class="word-title" id="wordTitle"></p>
-    <br></br>
+
+    <!--Here we would serve the links and/or name of the sources that were used to get the information that was just displayed.-->
+    <p class="source" id="sources"></p>
+
+    <p><b>What is it? Here's a brief summary:</b></p>
     
     <!--Here would display the text with the description/definition of our word and its terms.-->
     <div class="description" id="description"></div>
     <br></br>
 
-    <!--Here we would serve the links and/or name of the sources that were used to get the information that was just displayed.-->
-    <div class="source" id="sources"></div>
   </div>
   </body>
 </html>

@@ -1,11 +1,14 @@
-/**Sets pop-up winodw to max size in chrome extensions.*/
+html {
+  scroll-behavior: smooth;
+}
+/**Sets pop-up winodw to max size in chrome extensions. For every html page*/
 body {
   min-height: 600px;
   min-width: 400px;
   font-family: "Segoe UI", Tahoma;
 }
 
-h1 {
+#mainPage {
   font-size: larger;
   text-align: center;
   text-decoration: none;
@@ -17,11 +20,14 @@ button {
   align-content: center;
 }
 
+/** For the popup.html */
 #mainPicture {
   height: 200px;
   width: 400px;
   text-align: center;
 }
+
+/*Adds a margin for every html since its default is close to the window's edges*/
 #mainMenu,
 #mainInfo {
   margin: 10px;
@@ -30,7 +36,19 @@ button {
 .infoCheck-topics {
   margin-left: 10px;
 }
-/** */
+/**Styles for the information html file.*/
+
+#infoPage {
+  font-size: larger;
+  text-align: left;
+  color: black;
+  text-decoration-line: none;
+}
+
+img {
+  width: 400px;
+  height: 200px;
+}
 
 #wordFound {
   text-align: center;
