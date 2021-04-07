@@ -158,5 +158,4 @@ public class JsonMaker {
 
   }
 
-  private class 
 }
