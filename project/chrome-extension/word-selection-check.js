@@ -16,9 +16,6 @@ function checkIfChecked(){
   else if(document.getElementById("ClimateChange").checked == true){
     readWord("Climate Change");
   }
-  else if(document.getElementById("Example").checked == true){
-    readWord("Example");
-  }
   else
     return null;
 

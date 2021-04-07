@@ -1,0 +1,26 @@
+{
+    "COVID-19": {
+       "description": "People of any age, even healthy young adults and children, can get COVID-19. Risk for severe illness with COVID-19 increases with age, with older adults at highest risk. Certain medical conditions can also increase risk for severe illness.",
+       "image": "https://www.cdc.gov/media/dpk/diseases-and-conditions/coronavirus/images/outbreak-coronavirus-world-1024x506px.jpg",
+       "URL": [
+         "https://www.cdc.gov/coronavirus/2019-ncov/your-health/need-to-know.html",
+         "https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html"
+       ]
+     },
+       "Climate Change": {
+          "description": "People who study Earth see that Earth's climate is getting warmer. Earth's temperature has gone up about one degree Fahrenheit in the last 100 years. This may not seem like much. But small changes in Earth's temperature can have big effects.",
+          "image": "/images/climate-change.png",
+          "URL": [
+            "https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html",
+            "https://climate.nasa.gov/news/3072/direct-observations-confirm-that-humans-are-throwing-earths-energy-budget-off-balance/"
+          ]
+        },
+        "Vaccines": {
+            "description": "vaccines",
+            "image": "/images/climate-change.png",
+            "URL": [
+              "https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html",
+              "https://climate.nasa.gov/news/3072/direct-observations-confirm-that-humans-are-throwing-earths-energy-budget-off-balance/"
+            ]
+          }
+  }
