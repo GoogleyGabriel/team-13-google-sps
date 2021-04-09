@@ -8,18 +8,30 @@
 * {
 *   "covid": {
 *     "description": "People of any age, even healthy young adults and children, can get COVID-19. Risk for severe illness with COVID-19 increases with age, with older adults at highest risk. Certain medical conditions can also increase risk for severe illness.",
-*     "image": "/images/covid.png",
+*     "image": "chrome-extension/images/covid.png",
 *     "URL": [
-*       "https://www.cdc.gov/coronavirus/2019-ncov/your-health/need-to-know.html",
-*       "https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html"
+*       {
+*         source: "CDC: What You Need to Know",
+*         link: "https://www.cdc.gov/coronavirus/2019-ncov/your-health/need-to-know.html"
+*       },
+*       {
+*         source: "CDC: Older Adults",
+*         link: "https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/older-adults.html"
+*       } 
 *     ]
 *   },
 *   "climate change": {
 *     "description": "People who study Earth see that Earth's climate is getting warmer. Earth's temperature has gone up about one degree Fahrenheit in the last 100 years. This may not seem like much. But small changes in Earth's temperature can have big effects.",
-*     "image": "/images/climate-change.png",
+*     "image": "chrome-extension/images/climate-change.png",
 *     "URL": [
-*       "https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html",
-*       "https://climate.nasa.gov/news/3072/direct-observations-confirm-that-humans-are-throwing-earths-energy-budget-off-balance/"
+*       {
+*         source: "NASA on Climate Change",
+*         link: "https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html"
+*       },
+*       {
+*         source: "NASA: Earth's energy budget",
+*         link: "https://climate.nasa.gov/news/3072/direct-observations-confirm-that-humans-are-throwing-earths-energy-budget-off-balance/"
+*       }   
 *     ]
 *   },
 *   ... more words ...
@@ -136,10 +148,7 @@ public class JsonMaker {
     private String image;
 
     /** [URL] is the list of URLs that fact descriptions are gathered. */
-    private ArrayList<String> URL = new ArrayList<>();
-
-    public Word() {
-    }
+    private ArrayList<URLPair> URL = new ArrayList<>();
 
     /** [setInfo info] assigns the value [val] to field [info]. */
     public void setInfo(String info, String val) {
@@ -153,8 +162,30 @@ public class JsonMaker {
 
     /** [addUrl url] appends the value [url] to [URL]  */
     public void addUrl(String url) {
-      URL.add(url);
+      URL.add(new URLPair(url));
     }
 
   }
+
+  private static class URLPair {
+    private String source;
+    private String link;
+
+    public URLPair(String pair) {
+      setURLPair(pair, ",");
+    }
+
+    /** Sets the fields source substring from the start of 
+     * pair to the last occurrence of the delimiter and 
+     * link to be everything else in pair. 
+     * If the delimeter is not found, source will remain untouched.
+    */
+    public void setURLPair(String pair, String delimiter) {
+      int delimit = pair.lastIndexOf(delimiter);
+      if (delimit != -1)
+        source = pair.substring(0, delimit);
+      link = pair.substring(delimit + 1);
+    }
+  }
+
 }
