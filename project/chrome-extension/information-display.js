@@ -32,22 +32,33 @@ function createDescription(description) {
   
 }
 
+function addSourceTags(sourceURL) {
+  for(var i = 0; i < sourceURL.length; i++) {
+    var idName = "source" + i;
+    var p = document.createElement('p');
+    p.setAttribute('class', 'source');  
+    p.setAttribute('id', idName);
+    document.getElementById("sources").appendChild(p);
+  }
+}
 // Add sources, such as link or references, to the information used for the
 // description of the word.
 function addSources(sourceURL) {
   // TODO(@SamRod33 or @SofiaPSU): Add to the sources by using source.innerText
-
-      var a = document.createElement('a');
-      a.setAttribute('href',sourceURL);
-      // a.innerHTML = "Source: "+topics[i].source.sourceName;
-      a.innerHTML = "Source: "+ sourceURL;
-      document.getElementById('sources').appendChild(a);
+  for(var i = 0; i < sourceURL.length; i++) {
+    var idName = "source" + i;
+    var a = document.createElement('a');
+    a.setAttribute('href',sourceURL[i].link);
+    // a.innerHTML = "Source: "+topics[i].source.sourceName;
+    a.innerHTML = "Source: "+ sourceURL[i].source;
+    document.getElementById(idName).appendChild(a);
+  }
 
 }
   function loadJSON(callback) {
     var xObj = new XMLHttpRequest();
     xObj.overrideMimeType("application/json");
-    xObj.open('GET', 'data.json', true);
+    xObj.open('GET', 'words.json', true);
     // 1. replace './data.json' with the local path of your file
     xObj.onreadystatechange = function() {
         if (xObj.readyState === 4 && xObj.status === 200) {
@@ -67,6 +78,7 @@ function addSources(sourceURL) {
       wordFoundAndIntro(word);
       addPicture(json[word].image);
       createDescription(json[word].description);
+      addSourceTags(json[word].URL);
       addSources(json[word].URL);
     
       // var json = JSON.parse(response);
