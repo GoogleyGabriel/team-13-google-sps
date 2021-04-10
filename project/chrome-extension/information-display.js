@@ -12,46 +12,56 @@ function wordFoundAndIntro(word) {
   const intro = document.getElementById("wordTitle");
   //Adds the word of the id to the wordTitle element
   intro.innerText =
-    "See the latest information about " + word;
+    "See the latest information about " + word + ".";
 }
 
 //Finds the picture of the word on the dictionary.
 function addPicture(imageURL) {
-
       var img = document.createElement("img");
       img.src = imageURL;
       var src = document.getElementById("imageAdded");
       src.appendChild(img);
-  
 }
 
 // Add information aboout word to info.html
 function createDescription(description) {
-  // TODO(@SamRod33 or @SofiaPSU): Add to the description by using description.innerText
       document.getElementById("description").innerText += description;
-  
 }
 
+function addSourceTags(sourceURL) {
+  for(var i = 0; i < sourceURL.length; i++) {
+    var idName = "source" + i;
+    var p = document.createElement('p');
+    p.setAttribute('class', 'source');  
+    p.setAttribute('id', idName);
+    if(!(i+1 == sourceURL.length)){
+    p.innerText = "Sources: ";
+    }
+    document.getElementById("sources").appendChild(p);
+  }
+}
 // Add sources, such as link or references, to the information used for the
 // description of the word.
 function addSources(sourceURL) {
-  // TODO(@SamRod33 or @SofiaPSU): Add to the sources by using source.innerText
-
-      var a = document.createElement('a');
-      a.setAttribute('href',sourceURL);
-      // a.innerHTML = "Source: "+topics[i].source.sourceName;
-      a.innerHTML = "Source: "+ sourceURL;
-      document.getElementById('sources').appendChild(a);
+  for(var i = 0; i < sourceURL.length; i++) {
+    var idName = "source" + i;
+    var a = document.createElement('a');
+    a.setAttribute('href',sourceURL[i].link);
+    a.innerHTML = sourceURL[i].source;
+    if(!(i+1 == sourceURL.length)){
+      a.innerHTML+=",";
+    }
+    document.getElementById(idName).appendChild(a);
+  }
 
 }
   function loadJSON(callback) {
     var xObj = new XMLHttpRequest();
     xObj.overrideMimeType("application/json");
-    xObj.open('GET', 'data.json', true);
-    // 1. replace './data.json' with the local path of your file
+    xObj.open('GET', 'words.json', true);
     xObj.onreadystatechange = function() {
         if (xObj.readyState === 4 && xObj.status === 200) {
-            // 2. call your callback function
+            //call your callback function
             callback(xObj.responseText);
         }
     };
@@ -60,21 +70,13 @@ function addSources(sourceURL) {
   
   function init() {
     loadJSON(function(response) {
-      // 3. parse JSON string into JSON Object
-      console.log('response =', response);
       var word = String(localStorage.getItem("rdoIdVarKey"));
       var json = JSON.parse(response);
       wordFoundAndIntro(word);
       addPicture(json[word].image);
       createDescription(json[word].description);
+      addSourceTags(json[word].URL);
       addSources(json[word].URL);
-    
-      // var json = JSON.parse(response);
-      // console.log('json response=', json);
-      //console.log('your local JSON =', JSON.stringify(json, null, 4));
-      // 4. render to your page
-      // const app = document.querySelector('#app');
-      // app.innerHTML = '<pre>' + json[word].description +'<br>' +json[word].image +'<br>'+ json[word].URL + '</pre>';
     });
   }
 
