@@ -7,8 +7,16 @@ body {
   min-width: 400px;
 }
 
-#mainPage {
-  font-size: larger;
+/*Adds a margin for every html since its default is close to the window's edges*/
+#mainMenu,
+#mainInfo {
+  margin: 10px;
+}
+
+/**Popup.html*/
+#mainPageTitle {
+  margin-top: 5px;
+  font-size: 30px;
   text-align: center;
   text-decoration: none;
 }
@@ -19,23 +27,25 @@ button {
   align-content: center;
 }
 
-/** For the popup.html */
 #mainPicture {
   height: 200px;
   width: 400px;
   text-align: center;
 }
 
-/*Adds a margin for every html since its default is close to the window's edges*/
-#mainMenu,
-#mainInfo {
-  margin: 10px;
+#mainMenu {
+  font-family: "Montserrat";
 }
 
 .infoCheck-topics {
   margin-left: 10px;
 }
-/**Styles for the information html file.*/
+
+/**Styles for the info.html file.*/
+
+#mainInfo {
+  font-family: "Montserrat";
+}
 
 #infoPage {
   font-size: larger;
@@ -51,4 +61,21 @@ img {
 
 #wordFound {
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#wordTitle {
+  font-size: 15px;
+}
+
+#sources p {
+  font-size: 10px;
+  margin-left: 2px;
+  text-decoration-line: none;
+}
+
+#sources {
+  display: flex;
+  margin-bottom: 1px;
 }
