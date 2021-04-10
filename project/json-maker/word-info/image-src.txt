@@ -1,7 +1,7 @@
-chrome-extension/images/covid.png
+/images/covid.png
 
-chrome-extension/images/climate-change.png
+/images/climate-change.png
 
-chrome-extension/images/elections.jpg
+/images/elections.jpg
 
-chrome-extension/images/vaccine.jpg
+/images/vaccine.jpg
