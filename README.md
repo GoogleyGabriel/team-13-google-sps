@@ -26,4 +26,6 @@ To use the *InfoCheck* chrome extension from your Google Chrome browser, follow 
  
 Use the InfoCheck extension anytime you wish to review information about given topics, and access their sources to learn more.
 ***
+Preview
+<img src="https://i.imgur.com/rEcgC9P.gif"><br>
 Team 13 | Google SPS Sprint 2021
